@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FSTDA Laumer</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/style/styles.css">
+    <!-- endinject -->
+</head>
+
+<body ng-app ="app" ng-controller="ToDoController as vm">
+   <div class="container">
+    <h1>A Full Stack To-Do App</h1>
+    	
+
+	        <div class="col-xs-5">
+	        	<div class="panel panel-info">
+	        		<div class="panel-heading"><h5>Add To-do</h5></div>
+	        			<div class="panel-body">
+							<div class="form-group">	
+								<label for="task">Text</label>
+							    <input type="text" name="task" class="form-control" ng-model="task.name">
+								<label for="priority">Priority</label>
+					            <select class="form-control" name="priority" ng-model="task.priority">
+					            	<option class="1" value="1">High</option>
+					            	<option class="2" value="2">Medium</option>
+					            	<option class="3" value="3">Low</option>
+					            </select>
+					        </div>
+			     		</div>
+			     		<div class="panel-footer">
+			     		<button class="btn btn-primary" ng-click="addTask()">Add To-do</button>
+						</div> 
+					
+				
+				</div> 
+			</div>
+		   
+			<div class="col-xs-7" >
+				<div>	
+						<button class="btn btn-primary" ng-click="myOrderBy='-priority'">Order by highest priority</button>
+						<button class="btn btn-primary" ng-click="myOrderBy='+priority'">Order by lowest priority</button>
+						<button class="btn btn-primary" ng-click="myOrderBy='name';">Order alphabetically</button>
+				</div>
+				<table class="table table-border">
+				<div id= "optionbuttonoutput">
+						<div ng-repeat="item in tasklist | orderBy: myOrderBy" class="alert" ng-class="{'alert-danger': item.priority == '1', 'alert-info': item.priority == '2', 'alert-warning': item.priority == '3'}">{{item.name}}</div>
+				</div>
+				</table>
+			</div>
+		
+	
+
+ 	<!-- bower:js -->
+ 	<script src="bower_components/angular/angular.js"></script>
+ 	<script src="bower_components/jquery/dist/jquery.js"></script>
+ 	<!-- endbower -->
+    <!-- inject:js -->
+    <script src="/app/app.js"></script>
+    <script src="/app/toDo.Controller.js"></script>
+    <script src="/app/toDo.Factory.js"></script>
+    <!-- endinject -->
+    </div> 
+</body>
+
+</html>
